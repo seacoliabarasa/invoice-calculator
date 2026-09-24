@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        body{
+            background-color:azure;
+            font-weight: 700;
+            font-family: Arial, sans-serif;
+        }
+        h1{
+            margin: -20px;
+            font-size: 14px;
+            border-radius:15px 15px 0 0;
+            font-weight: 200;
+            background-color: rgba(0, 0, 0, 0.066);
+            padding: 10px;
+        }
+        h2{
+            margin-top: 55px;
+            margin-bottom:40px;
+            font-size:16px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            width: 600px;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+        .form {
+            display:flex;
+            flex-direction: column;
+            
+            margin-bottom: 20px;
+        }
+        label{
+            width: 200px;
+        }
+        label input{
+            display: flex;
+            
+            
+        }
+        .form-group {
+            margin-bottom: 10px;
+            display: flex;
+        }
+        input{
+            padding: 5px;
+            width:300px;
+            border: 1px solid rgba(0, 0, 0, 0.137);
+            border-radius:5px;
+            background-color: rgba(0, 0, 0, 0.02);
+            font-weight: 600;
+            font-size: 20px;
+            color: brown;
+
+        }
+        button{
+            margin-top: 10px;
+            margin-bottom: 20px;
+            margin-left:200px;
+            width: 310px;
+            background-color: orange;
+            border: none;
+            border-radius: 6px;
+            padding: 5px;
+            color: black;
+            font-weight: 800;
+            cursor: pointer;
+        }
+        button:hover{
+            color: brown;
+            background-color: rgba(255, 165, 0, 0.801);
+            box-shadow: 2px 2px 10px 3px rgba(255, 166, 0, 0.623);
+        }
+        .last{
+            display:flex;
+            margin-left: 5px;
+            gap: 200px;
+        }
+        .first{
+            width: 230px;
+        }
+        .line{
+            display: inline-block;
+            border-bottom: solid 2px rgba(0, 0, 0, 0.411);
+            width: 40px;
+            color: brown;
+        }
+        .red{
+            border-radius: 10px;
+            display: inline-block;
+            width:3px;
+            padding: 1px;
+            height: 3px;
+            border:0.5px solid rgba(0, 0, 0, 0.404);
+            background-color:rgba(255, 0, 0, 0.651);
+            margin-right: 3px;
+            margin-left: 15px;
+        }
+        .green{
+            width: 3px;
+            padding: 1px;
+            height: 3px;
+            border-radius: 10px;
+            border:0.5px solid rgba(0, 0, 0, 0.404);
+            background-color:rgba(0, 128, 0, 0.589);
+            display: inline-block;
+            margin-right: 5px;
+            margin-left: 3px;
+        }
+        .green2{
+            border:0.5px solid rgba(0, 0, 0, 0.397);
+            width: 3px;
+            padding: 1px;
+            border-radius: 10px;
+            height: 3px;
+            display: inline-block;
+            background-color:rgba(0, 128, 0, 0.61);
+            margin-right: 20px;
+            margin-left: 3px;    
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>  <span class="red"></span> <span class="green"></span> <span class="green2"></span> JAVASCRIPT BUSINESS INVOICE CALCULATOR</h1>
+        <h2 class="header2">PRODUCT INVOICE</h2>
+        <div class="form">
+            <div class="form-group">
+                <label for="name">Product Name</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="price">Unit price</label>
+                <input type="text" id="price" name="price">
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="text" id="quantity" name="quantity">
+            </div>
+        </div>
+            <button type="button" id="calculate">CALCULATE</button>
+        <div class="total">
+            <p class="last"><span class="first"> Subtotal</span>  <span>Ksh. <span class="line" id="subtotal"></span></span> </p>
+            <p class="last"><span class="first">Tax </span><span>Ksh. <span class="line" id="tax"></span></span>  </p>
+            <p class="last"><span class="first">Total</span> <span>Ksh. <span class="line" id="total"></span> </span></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById("price")
+        document.getElementById("quantity")
+        document.getElementById("calculate")
+        document.getElementById("subtotal")
+        document.getElementById("tax")
+        document.getElementById("total")
+
+        const calculateButton = document.getElementById("calculate");
+
+        calculateButton.addEventListener("click", function () {
+        const price = parseFloat(document.getElementById("price").value);
+        const quantity = parseFloat(document.getElementById("quantity").value);
+
+        if (isNaN(price) || isNaN(quantity)) {
+        alert("Please enter a valid price and quantity.");
+        return;
+}
+
+        const subtotal = price * quantity;
+        const tax = subtotal * 0.16;
+
+        const total = subtotal + tax;
+
+        document.getElementById("subtotal").textContent = subtotal;
+        document.getElementById("tax").textContent = tax;
+        document.getElementById("total").textContent = total;
+});
+        
+        
+
+    </script>
+</body>
+</html>
